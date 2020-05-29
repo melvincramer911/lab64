@@ -1,3 +1,9 @@
+uptime 
 
-echo "my dog has fleas"
+set -vx 
+
+uptime 
+
+read me 
+
 
