@@ -30,6 +30,21 @@ echo "Commenting out lines in /etc/puppetlabs/puppet/puppet.conf"
 sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/puppet/puppet.conf 
 
 
+## populate the puppet.conf file making sure I put in the HOSTNAME.  NOT needed if it has public ip   
+cat <<EOF >>  /etc/puppetlabs/puppet/puppet.conf 
+[main]
+certname = `hostname`
+
+[master]
+certname = `hostname`
+vardir = /opt/puppetlabs/server/data/puppetserver
+logdir = /var/log/puppetlabs/puppetserver
+rundir = /var/run/puppetlabs/puppetserver
+pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
+codedir = /etc/puppetlabs/code
+EOF
+
+
 
 
 
