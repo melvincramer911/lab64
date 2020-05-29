@@ -10,8 +10,13 @@ cd ~
 #echo "updating my server with apt update"
 #apt update
 
-echo "backing up /etc/hosts"
-cp -a /etc/hosts /etc/hosts.org
+#echo "backing up /etc/hosts"
+cp -a /etc/hosts /etc/hosts.org.$(date +%s)
+
+set -vx 
+
+echo "commenting out all the lines of /etc/hosts"
+sed -i 's/^\([^#]\)/#\1/g' /etc/hosts
 
 
 
