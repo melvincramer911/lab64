@@ -58,6 +58,11 @@ cd ~
 #echo "just showing my new files "
 ls -larh /etc/puppetlabs/puppet/ssl/ca
 
+echo "[START AND ENABLE PUPPET]"
+systemctl start puppetserver
+systemctl enable puppetserver
+
+
 
 
 
