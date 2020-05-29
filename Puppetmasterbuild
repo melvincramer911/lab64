@@ -31,25 +31,25 @@ cd ~
 
 
 ## populate the puppet.conf file making sure I put in the HOSTNAME.  NOT needed if it has public ip   
-cat <<EOF >>  /etc/puppetlabs/puppet/puppet.conf 
-[main]
-certname = `hostname`
+#cat <<EOF >>  /etc/puppetlabs/puppet/puppet.conf 
+#[main]
+#certname = `hostname`
 
-[master]
-certname = `hostname`
-vardir = /opt/puppetlabs/server/data/puppetserver
-logdir = /var/log/puppetlabs/puppetserver
-rundir = /var/run/puppetlabs/puppetserver
-pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
-codedir = /etc/puppetlabs/code
-EOF
+#[master]
+#certname = `hostname`
+#vardir = /opt/puppetlabs/server/data/puppetserver
+#logdir = /var/log/puppetlabs/puppetserver
+#rundir = /var/run/puppetlabs/puppetserver
+#pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
+#codedir = /etc/puppetlabs/code
+#EOF
 
+echo "backing up  /etc/default/puppetserver"
+cp -a  /etc/default/puppetserver  /etc/default/puppetserver.org.$(date +%s)
 
-
-
-
-
-
+echo "[For Small Servers Only] set the memory for 1 gig instead of 2" 
+sed -i 's~-Xms2g~-Xms1g~g'   /etc/default/puppetserver
+sed -i 's~-Xmx2g~-Xmx1g ~g'   /etc/default/puppetserver
 
 
 
