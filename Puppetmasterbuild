@@ -23,11 +23,11 @@ cd ~
 #echo "installing puppet server !!"
 #apt-get install puppetserver -y 
 
-echo "backing up  /etc/puppetlabs/puppet/puppet.conf"
-cp -a  /etc/puppetlabs/puppet/puppet.conf  /etc/puppetlabs/puppet/puppet.conf.org.$(date +%s)
+#echo "backing up  /etc/puppetlabs/puppet/puppet.conf"
+#cp -a  /etc/puppetlabs/puppet/puppet.conf  /etc/puppetlabs/puppet/puppet.conf.org.$(date +%s)
 
-echo "Commenting out lines in /etc/puppetlabs/puppet/puppet.conf"
-sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/puppet/puppet.conf 
+#echo "Commenting out lines in /etc/puppetlabs/puppet/puppet.conf"
+#sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/puppet/puppet.conf 
 
 
 ## populate the puppet.conf file making sure I put in the HOSTNAME.  NOT needed if it has public ip   
