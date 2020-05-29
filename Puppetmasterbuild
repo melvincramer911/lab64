@@ -11,12 +11,16 @@ cd ~
 #apt update
 
 #echo "backing up /etc/hosts"
-cp -a /etc/hosts /etc/hosts.org.$(date +%s)
+#cp -a /etc/hosts /etc/hosts.org.$(date +%s)
 
-set -vx 
+#echo "commenting out all the lines of /etc/hosts"
+#sed -i 's/^\([^#]\)/#\1/g' /etc/hosts
 
-echo "commenting out all the lines of /etc/hosts"
-sed -i 's/^\([^#]\)/#\1/g' /etc/hosts
+echo "setup 127.0.0.1 to hostname "
+echo "127.0.0.1 localhost `hostname` puppet "  >> /etc/hosts
+cat /etc/hosts 
+
+
 
 
 
