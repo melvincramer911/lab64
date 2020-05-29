@@ -1,13 +1,4 @@
-uptime 
-
-set -vx 
-
-uptime 
-
-read me 
-## again
-
-# and again 
-## lat 
-## again 
+echo "adding puppet repo"
+cd ~
+wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
 
