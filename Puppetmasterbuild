@@ -20,8 +20,13 @@ cd ~
 #echo "127.0.0.1 localhost `hostname` puppet "  >> /etc/hosts
 #cat /etc/hosts 
 
-echo "installing puppet server !!"
-apt-get install puppetserver -y 
+#echo "installing puppet server !!"
+#apt-get install puppetserver -y 
+
+echo "Commenting out lines in /etc/puppetlabs/puppet/puppet.conf"
+sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/puppet/puppet.conf 
+
+
 
 
 
