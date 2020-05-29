@@ -44,12 +44,19 @@ cd ~
 #codedir = /etc/puppetlabs/code
 #EOF
 
-echo "backing up  /etc/default/puppetserver"
-cp -a  /etc/default/puppetserver  /etc/default/puppetserver.org.$(date +%s)
+#echo "backing up  /etc/default/puppetserver"
+#cp -a  /etc/default/puppetserver  /etc/default/puppetserver.org.$(date +%s)
 
-echo "[For Small Servers Only] set the memory for 1 gig instead of 2" 
-sed -i 's~-Xms2g~-Xms1g~g'   /etc/default/puppetserver
-sed -i 's~-Xmx2g~-Xmx1g ~g'   /etc/default/puppetserver
+#echo "[For Small Servers Only] set the memory for 1 gig instead of 2" 
+#sed -i 's~-Xms2g~-Xms1g~g'   /etc/default/puppetserver
+#sed -i 's~-Xmx2g~-Xmx1g ~g'   /etc/default/puppetserver
+
+echo "[SETUP CA SERVER AND ADD TO PATH] exit and sudo -i if you want to check " 
+/opt/puppetlabs/bin/puppetserver ca setup
+echo "## desired response:  Generation succeeded. Find your files in /etc/puppetlabs/puppet/ssl/ca"
+
+
+
 
 
 
