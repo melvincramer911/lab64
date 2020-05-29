@@ -23,6 +23,9 @@ cd ~
 #echo "installing puppet server !!"
 #apt-get install puppetserver -y 
 
+echo "backing up  /etc/puppetlabs/puppet/puppet.conf"
+cp -a  /etc/puppetlabs/puppet/puppet.conf  /etc/puppetlabs/puppet/puppet.conf.org.$(date +%s)
+
 echo "Commenting out lines in /etc/puppetlabs/puppet/puppet.conf"
 sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/puppet/puppet.conf 
 
