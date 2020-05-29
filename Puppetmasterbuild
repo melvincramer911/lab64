@@ -1,4 +1,5 @@
 echo "adding puppet repo"
 cd ~
-wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
+#wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
+dpkg -i puppet6-release-bionic.deb
 
