@@ -51,11 +51,12 @@ cd ~
 #sed -i 's~-Xms2g~-Xms1g~g'   /etc/default/puppetserver
 #sed -i 's~-Xmx2g~-Xmx1g ~g'   /etc/default/puppetserver
 
-echo "[SETUP CA SERVER AND ADD TO PATH] exit and sudo -i if you want to check " 
-/opt/puppetlabs/bin/puppetserver ca setup
-echo "## desired response:  Generation succeeded. Find your files in /etc/puppetlabs/puppet/ssl/ca"
+#echo "[SETUP CA SERVER AND ADD TO PATH] exit and sudo -i if you want to check " 
+#/opt/puppetlabs/bin/puppetserver ca setup
+#echo "## desired response:  Generation succeeded. Find your files in /etc/puppetlabs/puppet/ssl/ca"
 
-
+#echo "just showing my new files "
+ls -larh /etc/puppetlabs/puppet/ssl/ca
 
 
 
