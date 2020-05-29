@@ -51,17 +51,19 @@ cd ~
 #sed -i 's~-Xms2g~-Xms1g~g'   /etc/default/puppetserver
 #sed -i 's~-Xmx2g~-Xmx1g ~g'   /etc/default/puppetserver
 
-#echo "[SETUP CA SERVER AND ADD TO PATH] exit and sudo -i if you want to check " 
+#echo "[SETUP CA SERVER AND ADD TO PATH]" 
 #/opt/puppetlabs/bin/puppetserver ca setup
 #echo "## desired response:  Generation succeeded. Find your files in /etc/puppetlabs/puppet/ssl/ca"
 
 #echo "just showing my new files "
-ls -larh /etc/puppetlabs/puppet/ssl/ca
+#ls -larh /etc/puppetlabs/puppet/ssl/ca
 
-echo "[START AND ENABLE PUPPET]"
-systemctl start puppetserver
-systemctl enable puppetserver
+#echo "[START AND ENABLE PUPPET]"
+#systemctl start puppetserver
+#systemctl enable puppetserver
 
+#echo "manually check out your build:  exit; sudo -i; puppetserver ca list   "
+#echo "desired response:  No certificates to list "
 
 
 
