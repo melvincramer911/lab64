@@ -1,5 +1,14 @@
-echo "adding puppet repo"
+# note, run as root on the puppet master
+
+#echo "adding puppet repo"
 cd ~
+
+echo "get puppet REPO and install it"
 #wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
-dpkg -i puppet6-release-bionic.deb
+#dpkg -i puppet6-release-bionic.deb
+
+echo "updating my server with apt update"
+apt update
+
+
 
