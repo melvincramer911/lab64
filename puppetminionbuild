@@ -1,3 +1,7 @@
+set -vx
+
+trap read debug
+
 # echo building minion
 
 
