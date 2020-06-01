@@ -4,18 +4,18 @@
 
 
 echo "backing up /etc/hosts"
-cp -a /etc/hosts /etc/hosts.org.$(date +%s)
+#cp -a /etc/hosts /etc/hosts.org.$(date +%s)
 
  
 echo "## populate the /etc/hosts file making sure I put in puppet server."  
 echo "NOT needed if it has public ip.  Will correct ip later"   
-cat <<EOF >>  /etc/hosts 
-172.31.111.116   debrendlinger1c.mylabserver.com    puppet
-EOF
+#cat <<EOF >>  /etc/hosts 
+#172.31.111.116   debrendlinger1c.mylabserver.com    puppet
+#EOF
 
 
-echo "add repostitory"
-rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm 
+#echo "add repostitory"
+#rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm 
 
 
 echo "yum update"
