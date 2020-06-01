@@ -1,5 +1,10 @@
 # note, run as root on the puppet master
 
+set -vx
+
+trap read debug
+
+
 #echo "adding puppet repo"
 cd ~
 
