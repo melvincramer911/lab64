@@ -65,6 +65,7 @@ cd ~
 #echo "manually check out your build:  exit; sudo -i; puppetserver ca list   "
 #echo "desired response:  No certificates to list "
 
-
+echo " on master: puppetserver ca list "         >> /etc/go 
+echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "         >> /etc/go 
 
 
