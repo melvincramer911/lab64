@@ -42,6 +42,10 @@ read me
 
 echo "FIX IP ADDRESS IN /ETC/HOSTS FOR MASTER; WORK ON FINGERPRINT"
 
+echo " edit /etc/hosts for master ip "           >> /etc/go 
+echo " reboot minion "                           >> /etc/go
+echo " on minion: puppet agent --fingerprint "   >> /etc/go 
+echo " on master: puppetserver ca list "         >> /etc/go 
 
 
 
