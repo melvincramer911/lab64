@@ -1,14 +1,16 @@
 
 
-echo "setting my reference directory to be used later"
-Refdir=/etc/puppetlabs/code
+#echo "setting my reference directory to be used later"
+#Refdir=/etc/puppetlabs/code
 
-echo "install the pdk puppet development kit"
-apt-get install pdk  
+#echo "install the pdk puppet development kit"
+#apt-get install pdk  
 
 echo "setting the name of my module for later"
 ModuleName=nginx
-(cd /etc/puppetlabs/code/modules;  echo $ModuleName )
+(cd /etc/puppetlabs/code/modules;  pdk new module  $ModuleName )
+
+
 
 
 
