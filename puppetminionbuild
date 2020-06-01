@@ -10,7 +10,7 @@ cp -a /etc/hosts /etc/hosts.org.$(date +%s)
 echo "## populate the /etc/hosts file making sure I put in puppet server."  
 echo "NOT needed if it has public ip.  Will correct ip later"   
 cat <<EOF >>  /etc/hosts 
-10.10.10.10   debrendlinger1c.mylabserver.com    puppet
+172.31.111.116   debrendlinger1c.mylabserver.com    puppet
 EOF
 
 
