@@ -23,7 +23,7 @@ yum update -y
 
 
 echo "install puppet agent"
-yum install puppet-agent 
+yum install puppet-agent -y
 
 
 echo "start and enable puppet.  Note the ip address of the master needs to be fixed in /etc/hosts"
