@@ -10,7 +10,7 @@ echo "setting the name of my module for later"
 ModuleName=nginx
 (cd /etc/puppetlabs/code/modules; pdk new module $ModuleName --skip-interview )
 
-(cd /etc/puppetlabs/code/modules/$ModuleName; pdk new module $ModuleName )
+(cd /etc/puppetlabs/code/modules/$ModuleName; pdk new class install.pp )
 
 
 
