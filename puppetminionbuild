@@ -19,7 +19,7 @@ rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm
 
 
 echo "yum update"
-yum update
+yum update -y
 
 
 echo "install puppet agent"
