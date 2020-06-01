@@ -41,7 +41,11 @@ echo " edit /etc/hosts for master ip "           >> /etc/go
 echo " reboot minion "                           >> /etc/go
 echo " on minion: puppet agent --fingerprint "   >> /etc/go 
 echo " on master: puppetserver ca list "         >> /etc/go 
-echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "         >> /etc/go 
+echo " master: puppetserver ca sign --certname <certname> "   >> /etc/go
+
+
+
+ 
 
 
 
