@@ -6,41 +6,34 @@
 echo "backing up /etc/hosts"
 cp -a /etc/hosts /etc/hosts.org.$(date +%s)
 
-read me 
-
+ 
 echo "## populate the /etc/hosts file making sure I put in puppet server."  
 echo "NOT needed if it has public ip.  Will correct ip later"   
 cat <<EOF >>  /etc/hosts 
 10.10.10.10   debrendlinger1c.mylabserver.com    puppet
 EOF
 
-read me 
 
 echo "add repostitory"
 rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm 
 
-read me 
 
 echo "yum update"
 yum update
 
-read me
 
 echo "install puppet agent"
 yum install puppet-agent 
 
-read me 
 
 echo "start and enable puppet.  Note the ip address of the master needs to be fixed in /etc/hosts"
 systemctl start puppet 
 systemctl enable puppet
 
-read me 
 
 echo "fixing the ruby bug"
 mv /etc/profile.d/rvm.sh /etc/profile.d/rvm.sh.disabled 
 
-read me 
 
 echo "FIX IP ADDRESS IN /ETC/HOSTS FOR MASTER; WORK ON FINGERPRINT"
 
