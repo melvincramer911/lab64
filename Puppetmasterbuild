@@ -1,76 +1,73 @@
 # note, run as root on the puppet master
 
-set -vx
-
-trap read debug
-
 
 #echo "adding puppet repo"
 cd ~
 
-#echo "get puppet REPO and install it"
-#wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
-#dpkg -i puppet6-release-bionic.deb
+echo "get puppet REPO and install it"
+wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
+dpkg -i puppet6-release-bionic.deb
 
-#echo "updating my server with apt update"
-#apt update
+echo "updating my server with apt update"
+apt update
 
-#echo "backing up /etc/hosts"
-#cp -a /etc/hosts /etc/hosts.org.$(date +%s)
+echo "backing up /etc/hosts"
+cp -a /etc/hosts /etc/hosts.org.$(date +%s)
 
-#echo "commenting out all the lines of /etc/hosts"
-#sed -i 's/^\([^#]\)/#\1/g' /etc/hosts
+echo "commenting out all the lines of /etc/hosts"
+sed -i 's/^\([^#]\)/#\1/g' /etc/hosts
 
-#echo "setup 127.0.0.1 to hostname "
-#echo "127.0.0.1 localhost `hostname` puppet "  >> /etc/hosts
-#cat /etc/hosts 
+echo "setup 127.0.0.1 to hostname "
+echo "127.0.0.1 localhost `hostname` puppet "  >> /etc/hosts
+cat /etc/hosts 
 
-#echo "installing puppet server !!"
-#apt-get install puppetserver -y 
+echo "installing puppet server !!"
+apt-get install puppetserver -y 
 
-#echo "backing up  /etc/puppetlabs/puppet/puppet.conf"
-#cp -a  /etc/puppetlabs/puppet/puppet.conf  /etc/puppetlabs/puppet/puppet.conf.org.$(date +%s)
+echo "backing up  /etc/puppetlabs/puppet/puppet.conf"
+cp -a  /etc/puppetlabs/puppet/puppet.conf  /etc/puppetlabs/puppet/puppet.conf.org.$(date +%s)
 
-#echo "Commenting out lines in /etc/puppetlabs/puppet/puppet.conf"
-#sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/puppet/puppet.conf 
+echo "Commenting out lines in /etc/puppetlabs/puppet/puppet.conf"
+sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/puppet/puppet.conf 
 
 
 ## populate the puppet.conf file making sure I put in the HOSTNAME.  NOT needed if it has public ip   
-#cat <<EOF >>  /etc/puppetlabs/puppet/puppet.conf 
-#[main]
-#certname = `hostname`
+cat <<EOF >>  /etc/puppetlabs/puppet/puppet.conf 
+[main]
+certname = `hostname`
 
-#[master]
-#certname = `hostname`
-#vardir = /opt/puppetlabs/server/data/puppetserver
-#logdir = /var/log/puppetlabs/puppetserver
-#rundir = /var/run/puppetlabs/puppetserver
-#pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
-#codedir = /etc/puppetlabs/code
-#EOF
+[master]
+certname = `hostname`
+vardir = /opt/puppetlabs/server/data/puppetserver
+logdir = /var/log/puppetlabs/puppetserver
+rundir = /var/run/puppetlabs/puppetserver
+pidfile = /var/run/puppetlabs/puppetserver/puppetserver.pid
+codedir = /etc/puppetlabs/code
+EOF
 
-#echo "backing up  /etc/default/puppetserver"
-#cp -a  /etc/default/puppetserver  /etc/default/puppetserver.org.$(date +%s)
+echo "backing up  /etc/default/puppetserver"
+cp -a  /etc/default/puppetserver  /etc/default/puppetserver.org.$(date +%s)
 
-#echo "[For Small Servers Only] set the memory for 1 gig instead of 2" 
-#sed -i 's~-Xms2g~-Xms1g~g'   /etc/default/puppetserver
-#sed -i 's~-Xmx2g~-Xmx1g ~g'   /etc/default/puppetserver
+echo "[For Small Servers Only] set the memory for 1 gig instead of 2" 
+sed -i 's~-Xms2g~-Xms1g~g'   /etc/default/puppetserver
+sed -i 's~-Xmx2g~-Xmx1g ~g'   /etc/default/puppetserver
 
-#echo "[SETUP CA SERVER AND ADD TO PATH]" 
-#/opt/puppetlabs/bin/puppetserver ca setup
-#echo "## desired response:  Generation succeeded. Find your files in /etc/puppetlabs/puppet/ssl/ca"
+echo "[SETUP CA SERVER AND ADD TO PATH]" 
+/opt/puppetlabs/bin/puppetserver ca setup
+echo "## desired response:  Generation succeeded. Find your files in /etc/puppetlabs/puppet/ssl/ca"
 
-#echo "just showing my new files "
-#ls -larh /etc/puppetlabs/puppet/ssl/ca
+echo "just showing my new files "
+ls -larh /etc/puppetlabs/puppet/ssl/ca
 
-#echo "[START AND ENABLE PUPPET]"
-#systemctl start puppetserver
-#systemctl enable puppetserver
+echo "[START AND ENABLE PUPPET]"
+systemctl start puppetserver
+systemctl enable puppetserver
 
-#echo "manually check out your build:  exit; sudo -i; puppetserver ca list   "
-#echo "desired response:  No certificates to list "
+echo "manually check out your build:  exit; sudo -i; puppetserver ca list   "  >> /etc/go 
+echo "manually check out your build:  exit; sudo -i; puppetserver ca list   "   
+echo "desired response:  No certificates to list "
 
 echo " on master: puppetserver ca list "         >> /etc/go 
-echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "         >> /etc/go 
-
+echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "   
+echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "  >> /etc/go
 
