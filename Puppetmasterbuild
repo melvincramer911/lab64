@@ -1,6 +1,6 @@
 # note, run as root on the puppet master
 
-trap "set +x; sleep 5; set -x" DEBUG
+# trap "set +x; sleep 5; set -x" DEBUG
 
 #echo "adding puppet repo"
 cd ~
