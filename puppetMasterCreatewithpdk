@@ -1,18 +1,55 @@
 
 
-#echo "setting my reference directory to be used later"
-#Refdir=/etc/puppetlabs/code
 
-#echo "install the pdk puppet development kit"
-#apt-get install pdk  
+# clean up old modules  
+# yes | rm -rfi /etc/puppetlabs/code/modules/nginx
 
-echo "setting the name of my module for later"
+echo "settings of my module for later"
 ModuleName=nginx
-(cd /etc/puppetlabs/code/modules; pdk new module $ModuleName --skip-interview )
+firstdeploynode=debrendlinger2c.mylabserver.com
 
-(cd /etc/puppetlabs/code/modules/$ModuleName; pdk new class install )
+echo "creating module $ModuleName "
+(cd /etc/puppetlabs/code/environments/production/modules; pdk new module $ModuleName --skip-interview )
 
+echo "creating install class"
+(cd /etc/puppetlabs/code/environments/production/modules/$ModuleName; pdk new class install )
 
+echo "commenting out all the lines of install.pp"
+sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp
 
+echo "populating install.pp"
+cat <<EOF >>  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp 
+class $ModuleName::install {
+  package{'install_$ModuleName':
+    name   => 'nginx', 
+    ensure => 'present',
+    }
+}
+EOF
 
-# 
+echo "creating our init.pp file"
+(cd /etc/puppetlabs/code/environments/production/modules/$ModuleName; pdk new class $ModuleName )
+
+echo "commenting out all the lines of init.pp"
+sed -i 's/^\([^#]\)/#\1/g'  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
+
+echo "populating init.pp"
+cat <<EOF >>   /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
+class $ModuleName {
+  contain $ModuleName::install
+}
+EOF
+
+echo "creating our site.pp file"
+cat <<EOF >>   /etc/puppetlabs/code/environments/production/manifests/site.pp
+# site to node mappings !!!
+node $firstdeploynode{
+  class { '$ModuleName': }
+}
+EOF
+## force a run 
+#puppet agent -t 
+
+## how to validate
+#puppet parser validate install.pp
+#debrendlinger2c.mylabserver.com
