@@ -15,19 +15,19 @@ pdk new module $ModuleName --skip-interview
 
 echo "creating install class"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
-pdk new class install 
+pdk new class install >> /etc/go 
 
 echo "creating our init.pp file"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
-pdk new class $ModuleName 
+pdk new class $ModuleName >> /etc/go 
 
 echo "create the config class config.pp"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
-pdk new class config
+pdk new class config >> /etc/go 
 
 echo "creating class for service.pp"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
-pdk new class service
+pdk new class service  >> /etc/go 
 
 
 sleep 20 
