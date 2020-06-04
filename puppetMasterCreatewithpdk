@@ -9,10 +9,12 @@ ModuleName=nginx
 firstdeploynode=debrendlinger2c.mylabserver.com
 
 echo "creating module $ModuleName "
-(cd /etc/puppetlabs/code/environments/production/modules; pdk new module $ModuleName --skip-interview )
+cd /etc/puppetlabs/code/environments/production/modules
+pdk new module $ModuleName --skip-interview 
 
 echo "creating install class"
-(cd /etc/puppetlabs/code/environments/production/modules/$ModuleName; pdk new class install )
+cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
+pdk new class install 
 
 echo "commenting out all the lines of install.pp"
 sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp
@@ -28,7 +30,8 @@ class $ModuleName::install {
 EOF
 
 echo "creating our init.pp file"
-(cd /etc/puppetlabs/code/environments/production/modules/$ModuleName; pdk new class $ModuleName )
+cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
+pdk new class $ModuleName 
 
 echo "commenting out all the lines of init.pp"
 sed -i 's/^\([^#]\)/#\1/g'  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
