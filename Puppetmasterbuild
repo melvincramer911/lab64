@@ -1,7 +1,7 @@
 # note, run as root on the puppet master
 
-echo "set password"
-echo "home1qaz" | passwd --stdin cloud_user
+#echo "set password"
+#echo "home1qaz" | passwd --stdin cloud_user
 
 #echo "adding puppet repo"
 cd ~
