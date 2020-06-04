@@ -21,6 +21,15 @@ echo "creating our init.pp file"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class $ModuleName 
 
+echo "create the config class config.pp"
+cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
+pdk new class config
+
+echo "creating class for service.pp"
+cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
+pdk new class service
+
+
 sleep 20 
 
 
