@@ -12,24 +12,26 @@ firstdeploynode=debrendlinger2c.mylabserver.com
 echo "creating module $ModuleName "
 cd /etc/puppetlabs/code/environments/production/modules
 pdk new module $ModuleName --skip-interview 
+sleep 10 
 
 echo "creating install class"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class install >> /etc/go 
+sleep 10 
 
 echo "creating our init.pp file"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class $ModuleName >> /etc/go 
+sleep 10 
 
 echo "create the config class config.pp"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class config >> /etc/go 
+sleep 10 
 
 echo "creating class for service.pp"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class service  >> /etc/go 
-
-
 sleep 20 
 
 
@@ -66,6 +68,7 @@ node $firstdeploynode{
 EOF
 ## force a run 
 #puppet agent -t 
+echo "puppet agent -t" >> /etc/go 
 
 ## how to validate
 #puppet parser validate install.pp
