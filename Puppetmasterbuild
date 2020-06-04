@@ -72,3 +72,4 @@ echo " on master: puppetserver ca list "         >> /etc/go
 echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "   
 echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "  >> /etc/go
 
+echo "record masterip in minion build" >> /etc/go 
