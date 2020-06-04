@@ -1,6 +1,7 @@
 # note, run as root on the puppet master
 
-# trap "set +x; sleep 5; set -x" DEBUG
+echo "set password"
+echo "home1qaz" | passwd --stdin cloud_user
 
 #echo "adding puppet repo"
 cd ~
