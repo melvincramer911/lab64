@@ -2,7 +2,8 @@
 apt-get install pdk
 
 # clean up old modules  
-# yes | rm -rfi /etc/puppetlabs/code/modules/nginx
+# yes | rm -rfi /etc/puppetlabs/code/environments/production/modules/nginx
+# rm  /etc/puppetlabs/code/environments/production/manifests/site.pp
 
 echo "settings of my module for later"
 ModuleName=nginx
