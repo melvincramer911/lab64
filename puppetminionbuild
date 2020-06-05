@@ -42,7 +42,7 @@ echo " on minion: puppet agent --fingerprint "                    >> /etc/go
 echo " on master: puppetserver ca list "                          >> /etc/go 
 echo " master: puppetserver ca sign --certname <certname> "       >> /etc/go
 
-
+#  nohup ( curl https://raw.githubusercontent.com/melvincramer911/timfox123/master/puppetminionbuild | bash -x ) 
 
  
 
