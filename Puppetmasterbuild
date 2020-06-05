@@ -71,3 +71,17 @@ echo " on master: If the fingerprints match, we can approve on the master: puppe
 echo " on master: If the fingerprints match, we can approve on the master: puppetserver ca sign --certname <certname> "  >> /etc/go
 
 echo "record masterip in minion build" >> /etc/go 
+
+# comments for the built process 
+
+cat <<EOF >>  /etc/go
+curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/config.pp  > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/config.pt
+curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/init.pp    > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/init.pt
+curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/install.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/install.pt
+curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/service.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/service.pt
+curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/site.pp    > /etc/puppetlabs/code/environments/production/manifests/site.pt
+EOF
+
+
+
+
