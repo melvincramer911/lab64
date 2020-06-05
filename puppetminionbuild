@@ -1,11 +1,10 @@
 Masterip=172.31.110.199 
+echo "if you did not update the master ip, edit /etc/hosts when you are done"
 
-echo building minion
-
+echo "building minion"
 
 echo "backing up /etc/hosts"
 cp -a /etc/hosts /etc/hosts.org.$(date +%s)
-
  
 echo "## populate the /etc/hosts file making sure I put in puppet server."  
 echo "NOT needed if it has public ip.  Will correct ip later"   
@@ -37,11 +36,11 @@ mv /etc/profile.d/rvm.sh /etc/profile.d/rvm.sh.disabled
 
 echo "FIX IP ADDRESS IN /ETC/HOSTS FOR MASTER; WORK ON FINGERPRINT"
 
-echo " edit /etc/hosts for master ip "           >> /etc/go 
-echo " reboot minion "                           >> /etc/go
-echo " on minion: puppet agent --fingerprint "   >> /etc/go 
-echo " on master: puppetserver ca list "         >> /etc/go 
-echo " master: puppetserver ca sign --certname <certname> "   >> /etc/go
+echo " edit /etc/hosts for master ip if you do not get a build "  >> /etc/go 
+echo " reboot minion "                                            >> /etc/go
+echo " on minion: puppet agent --fingerprint "                    >> /etc/go 
+echo " on master: puppetserver ca list "                          >> /etc/go 
+echo " master: puppetserver ca sign --certname <certname> "       >> /etc/go
 
 
 
