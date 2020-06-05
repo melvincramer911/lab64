@@ -38,34 +38,34 @@ sleep 20
 echo "commenting out all the lines of install.pp"
 sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp
 
-echo "populating install.pp"
-cat <<EOF >>  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp 
-class $ModuleName::install {
-  package{'install_$ModuleName':
-    name   => 'nginx', 
-    ensure => 'present',
-    }
-}
-EOF
+# echo "populating install.pp"
+# cat <<EOF >>  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp 
+# class $ModuleName::install {
+#   package{'install_$ModuleName':
+#     name   => 'nginx', 
+#    ensure => 'present',
+#    }
+#}
+# EOF
 
 
 echo "commenting out all the lines of init.pp"
 sed -i 's/^\([^#]\)/#\1/g'  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
 
-echo "populating init.pp"
-cat <<EOF >>   /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
-class $ModuleName {
-  contain $ModuleName::install
-}
-EOF
+# echo "populating init.pp"
+#cat <<EOF >>   /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
+#class $ModuleName {
+#  contain $ModuleName::install
+#}
+#EOF
 
-echo "creating our site.pp file"
-cat <<EOF >>   /etc/puppetlabs/code/environments/production/manifests/site.pp
+#echo "creating our site.pp file"
+# cat <<EOF >>   /etc/puppetlabs/code/environments/production/manifests/site.pp
 # site to node mappings !!!
-node $firstdeploynode{
-  class { '$ModuleName': }
-}
-EOF
+#node $firstdeploynode{
+#  class { '$ModuleName': }
+#}
+#EOF
 ## force a run 
 #puppet agent -t 
 echo "puppet agent -t" >> /etc/go 
