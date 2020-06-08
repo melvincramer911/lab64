@@ -66,6 +66,13 @@ sed -i 's/^\([^#]\)/#\1/g'  /etc/puppetlabs/code/environments/production/modules
 #  class { '$ModuleName': }
 #}
 #EOF
+
+
+echo " cd to download the config file to the files directory"
+cd /etc/puppetlabs/code/environments/production/modules/nginx/files
+curl https://raw.githubusercontent.com/linuxacademy/content-puppetqs-nginx/master/files/rh-nginx.conf -o rh-nginx.conf
+
+
 ## force a run 
 #puppet agent -t 
 echo "puppet agent -t" >> /etc/go 
