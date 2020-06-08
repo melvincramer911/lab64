@@ -14,15 +14,15 @@ EOF
 
 
 echo "add repostitory"
-rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm 
+/bin/rpm -Uvh https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm 
 
 
 echo "yum update"
-yum update -y
+/bin/yum update -y
 
 
 echo "install puppet agent"
-yum install puppet-agent -y
+/bin/yum install puppet-agent -y
 
 
 echo "start and enable puppet.  Note the ip address of the master needs to be fixed in /etc/hosts"
