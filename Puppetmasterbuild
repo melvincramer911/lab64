@@ -1,3 +1,8 @@
+$!/bin/bash -x
+
+echo "single step mode"
+trace read debug 
+
 # note, run as root on the puppet master
 
 #echo "adding puppet repo"
