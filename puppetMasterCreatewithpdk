@@ -30,6 +30,13 @@ cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class config >> /etc/go 
 sleep 10 
 
+## ad next go around 
+#+ echo "create the config class params.pp"
+#+ cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
+#+ pdk new class params >> /etc/go 
+#+ sleep 10 
+
+
 echo "creating class for service.pp"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class service  >> /etc/go 
