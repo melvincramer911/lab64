@@ -1,9 +1,10 @@
+#!/bin/bash -x
+
+echo "single step mode"
+
+trace read debug 
 
 apt-get install pdk
-
-# clean up old modules  
-# yes | rm -rfi /etc/puppetlabs/code/environments/production/modules/nginx
-# rm  /etc/puppetlabs/code/environments/production/manifests/site.pp
 
 echo "settings of my module for later"
 ModuleName=nginx
@@ -33,40 +34,6 @@ echo "creating class for service.pp"
 cd /etc/puppetlabs/code/environments/production/modules/$ModuleName
 pdk new class service  >> /etc/go 
 sleep 20 
-
-
-echo "commenting out all the lines of install.pp"
-sed -i 's/^\([^#]\)/#\1/g' /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp
-
-# echo "populating install.pp"
-# cat <<EOF >>  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/install.pp 
-# class $ModuleName::install {
-#   package{'install_$ModuleName':
-#     name   => 'nginx', 
-#    ensure => 'present',
-#    }
-#}
-# EOF
-
-
-echo "commenting out all the lines of init.pp"
-sed -i 's/^\([^#]\)/#\1/g'  /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
-
-# echo "populating init.pp"
-#cat <<EOF >>   /etc/puppetlabs/code/environments/production/modules/$ModuleName/manifests/init.pp
-#class $ModuleName {
-#  contain $ModuleName::install
-#}
-#EOF
-
-#echo "creating our site.pp file"
-# cat <<EOF >>   /etc/puppetlabs/code/environments/production/manifests/site.pp
-# site to node mappings !!!
-#node $firstdeploynode{
-#  class { '$ModuleName': }
-#}
-#EOF
-
 
 echo " cd to download the config file to the files directory"
 cd /etc/puppetlabs/code/environments/production/modules/nginx/files
