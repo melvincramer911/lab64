@@ -1,4 +1,4 @@
-Masterip=172.31.125.10
+Masterip=172.31.103.128
 echo "if you did not update the master ip, edit /etc/hosts when you are done"
 
 echo "building minion"
