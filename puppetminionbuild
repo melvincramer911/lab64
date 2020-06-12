@@ -2,7 +2,7 @@
 
 echo "single step mode"
 
-trace read debug 
+trap read debug 
 
 Masterip=172.31.103.128
 echo "if you did not update the master ip, edit /etc/hosts when you are done"
