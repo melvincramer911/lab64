@@ -4,7 +4,8 @@ echo "single step mode"
 
 trace read debug 
 
-apt-get install pdk
+# moved to install 
+# apt-get install pdk
 
 echo "settings of my module for later"
 ModuleName=nginx
