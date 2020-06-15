@@ -67,6 +67,9 @@ echo "[START AND ENABLE PUPPET]"
 systemctl start puppetserver
 systemctl enable puppetserver
 
+echo "install pdk"
+apt-get install pdk
+
 echo "manually check out your build:  exit; sudo -i; puppetserver ca list   "  >> /etc/go 
 echo "manually check out your build:  exit; sudo -i; puppetserver ca list   "   
 echo "desired response:  No certificates to list "
