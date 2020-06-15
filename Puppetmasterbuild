@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 echo "single step mode"
-trace read debug 
+trap read debug 
 
 # note, run as root on the puppet master
 
@@ -79,23 +79,13 @@ echo "record masterip in minion build" >> /etc/go
 
 # comments for the built process 
 
-cat <<EOF >>  /etc/go
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/config.pp  > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/config.pt
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/init.pp    > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/init.pt
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/install.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/install.pt
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/service.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/service.pt
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/site.pp    > /etc/puppetlabs/code/environments/production/manifests/site.pt
-
-
-EOF
-
-cat <<EOF >>  /etc/go
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/config.pp  > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/config.pp
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/init.pp    > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/init.pp
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/install.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/install.pp
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/service.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/service.pp
-curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/site.pp    > /etc/puppetlabs/code/environments/production/manifests/site.pp
-EOF
+# cat <<EOF >>  /etc/go
+# curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/config.pp  > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/config.pt
+# curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/init.pp    > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/init.pt
+# curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/install.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/install.pt
+# curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/service.pp > /etc/puppetlabs/code/environments/production/modules/nginx/manifests/service.pt
+# curl https://raw.githubusercontent.com/melvincramer911/puppetfiles/master/site.pp    > /etc/puppetlabs/code/environments/production/manifests/site.pt
+# EOF
 
 
 
