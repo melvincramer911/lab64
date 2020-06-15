@@ -2,7 +2,7 @@
 
 echo "single step mode"
 
-trace read debug 
+trap read debug 
 
 # moved to install 
 # apt-get install pdk
