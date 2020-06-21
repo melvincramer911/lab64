@@ -1,5 +1,0 @@
-uncommment params.pp.
-
-echo "set analytics to no when pkd is installed"
-disabled: true
-/root/.config/puppet/analytics.yml
