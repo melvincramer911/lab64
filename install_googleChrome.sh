@@ -1,5 +1,7 @@
 #!/bin/bash -x
 
+echo "install chrome"
+
 funky(){ 
 
 trap read debug 
